@@ -1,24 +1,10 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
+import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HardFormPageObjects {
-
-    RegistrationPage registrationPage = new RegistrationPage();
-
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+public class HardFormPageObjects extends TestBase {
 
     @Test
     void seccessfulRegistrationTest() {
@@ -28,6 +14,12 @@ public class HardFormPageObjects {
         String email = "t0l4ik.kas1@gmail.com";
         String gender = "Male";
         String number = "4545444444";
+        String hobbies = "Sports";
+        String currentCity = "Almaty";
+        String imagePath = "img/1.png";
+        String state = "NCR";
+        String city = "Delhi";
+        String[] date = {"14", "February", "1996"};
 
 
         registrationPage.openPage()
@@ -35,33 +27,27 @@ public class HardFormPageObjects {
                 .setLastName(lastName)
                 .setEmail(email)
                 .setSex(gender)
-                .setNumber(number);
+                .setNumber(number)
+                .selectBirthDay(date)
+                .setHobbies(hobbies)
+                .setAdress(currentCity)
+                .uploadImage(imagePath)
+                .selectState(state)
+                .selectCity(city)
+                .verifyModalResult()
+                .verifyResult("Student Name", name + " " + lastName);
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("February");
-        $(".react-datepicker__year-select").selectOption("1996");
-        $(".react-datepicker__day.react-datepicker__day--014").click();
+        System.out.println("Secseesful test motherfuskers");
 
-        $("#hobbiesWrapper").$(byText("Sports")).click();
+    }
 
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
+    @Test
+    void openCalendar() {
 
-        $("#currentAddress").setValue("Almaty");
+        String[] date = {"14", "February", "1996"};
 
-        $("#state").click();
-        $("#stateCity-wrapper")
-                .$(byText("NCR")).click();
-
-        $("#city").click();
-        $("#stateCity-wrapper")
-                .$(byText("Delhi")).click();
-        $("#submit").click();
-
-        $(".modal-content").should(appear);
-        $(".modal-title").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Anatoliy"));
-
-        System.out.println("Secseesful test");
-
+        open("/automation-practice-form");
+        registrationPage.selectBirthDay(date)
+                .setFirstName("Fix");
     }
 }
