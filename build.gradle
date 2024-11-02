@@ -40,6 +40,7 @@ dependencies {
 
 }
 
+//Для запуска всех тестов
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
@@ -48,5 +49,11 @@ test {
 task simple_test(type: Test){
     useJUnitPlatform{
         includeTags("simple")
+    }
+}
+
+task remote_test(type: Test){
+    useJUnitPlatform{
+        includeTags("remote")
     }
 }
