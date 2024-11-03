@@ -1,12 +1,21 @@
 package tests;
 
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class HardFormPageObjects extends TestBase {
 
     @Test
+    @Tag("delete")
+    @DisplayName("сложная форма авторизациии")
+    @Owner("Колышкин")
+    @Feature("автотоест на форму авторизации")
     void seccessfulRegistrationTest() {
 
         String name = "Anatoliy";
@@ -22,11 +31,23 @@ public class HardFormPageObjects extends TestBase {
         String[] date = {"14", "February", "1996"};
 
 
-        registrationPage.openPage()
-                .setFirstName(name)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setSex(gender)
+        step("Открытие страницы", ()->{
+            registrationPage.openPage();
+        });
+
+        step("Установка имени ", ()->{
+            registrationPage.setFirstName(name);
+        });
+
+        step("Установка фамилии ", ()->{
+            registrationPage.setLastName(lastName);
+        });
+
+        step("Установка email ", ()->{
+            registrationPage.setEmail(email);
+        });
+
+                registrationPage.setSex(gender)
                 .setNumber(number)
                 .selectBirthDay(date)
                 .setHobbies(hobbies)

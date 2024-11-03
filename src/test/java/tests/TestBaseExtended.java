@@ -8,6 +8,7 @@ import pages.RegistrationPage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TestBaseExtended {
 
@@ -23,14 +24,13 @@ public class TestBaseExtended {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
-
-            /* How to enable video recording */
-            put("enableVideo", true);
-
-            //Включаем чтобы было окошко в окошке
-            put("enableVNC", true);
-        }});
+        options.setCapability("selenoid:options", Map.<String, Object>of(
+                /* How to enable video recording */
+                "enableVideo", true,
+                //Включаем окошко в ококшке
+                "enableVNC", true
+                )
+        );
 
         Configuration.browserCapabilities = capabilities;
 
