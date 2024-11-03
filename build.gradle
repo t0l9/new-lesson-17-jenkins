@@ -63,3 +63,10 @@ task delete_test(type: Test){
         includeTags("delete")
     }
 }
+
+task one_property_test(type: Test){
+    useJUnitPlatform{
+        includeTags("one_property")
+    }
+}
+
