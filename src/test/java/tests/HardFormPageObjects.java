@@ -47,8 +47,16 @@ public class HardFormPageObjects extends TestBase {
             registrationPage.setEmail(email);
         });
 
-                registrationPage.setSex(gender)
-                .setNumber(number)
+        step("Установка гендера ", ()->{
+            registrationPage.setSex(gender);
+        });
+
+        step("Установка номера телефона ", ()->{
+            registrationPage.setNumber(number);
+        });
+
+
+                registrationPage.setNumber(number)
                 .selectBirthDay(date)
                 .setHobbies(hobbies)
                 .setAdress(currentCity)
