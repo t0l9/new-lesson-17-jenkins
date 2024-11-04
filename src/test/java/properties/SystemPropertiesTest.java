@@ -34,4 +34,11 @@ public class SystemPropertiesTest {
     //gradle clean one_property_test
     //gradle clean one_property_test -Dbrowser=safari
 
+    @Test
+    @Tag("hello_test")
+    void simpleProperty5Test(){
+        System.out.println("Hello, " + System.getProperty("user_name", "unknow student"));
+    }
+
+    //gradle clean hello_test -Duser_name=Anatoliy
 }

@@ -35,9 +35,29 @@ dependencies {
             "com.google.code.gson:gson:2.11.0",
             "com.github.javafaker:javafaker:1.0.2",
             "io.qameta.allure:allure-selenide:2.29.0",
-            "org.aspectj:aspectjweaver:1.9.20"
+            "org.aspectj:aspectjweaver:1.9.20",
+            "org.slf4j:slf4j-simple:2.0.7"
     )
 
+}
+
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 //Для запуска всех тестов
@@ -67,6 +87,12 @@ task delete_test(type: Test){
 task one_property_test(type: Test){
     useJUnitPlatform{
         includeTags("one_property")
+    }
+}
+
+task hello_test(type: Test){
+    useJUnitPlatform{
+        includeTags("hello_test")
     }
 }
 
