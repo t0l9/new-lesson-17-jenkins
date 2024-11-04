@@ -22,7 +22,9 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.browser = "chrome";
         Configuration.browserVersion = "126.0";
-        Configuration.baseUrl = "https://demoqa.com";
+        //Configuration.baseUrl = "https://demoqa.com";
+        //Добавление через пропертиес
+        Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
 
         //Добавляем selenoid для запуска тестов из вне
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
