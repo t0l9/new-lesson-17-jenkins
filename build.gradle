@@ -92,7 +92,8 @@ task one_property_test(type: Test){
 
 task hello_test(type: Test){
     useJUnitPlatform{
-        includeTags("hello_test")
+        includeTags("hello_test", "one_property") // можно через запятую
+        //exclude("tags") исключить тесты
     }
 }
 
