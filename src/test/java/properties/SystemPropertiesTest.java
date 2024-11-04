@@ -1,5 +1,8 @@
 package properties;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +40,9 @@ public class SystemPropertiesTest {
     //gradle clean one_property_test -Dbrowser=safari
 
     @Test
+    @DisplayName("Проверка пропертиес")
+    @Owner("Kolyshkin")
+    @Feature("Проверка установка имени через пропертиес")
     @Tag("hello_test")
     void simpleProperty5Test(){
 
