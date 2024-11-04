@@ -3,6 +3,8 @@ package properties;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 public class SystemPropertiesTest {
 
     @Test
@@ -37,7 +39,11 @@ public class SystemPropertiesTest {
     @Test
     @Tag("hello_test")
     void simpleProperty5Test(){
-        System.out.println("Hello, " + System.getProperty("user_name", "unknow student"));
+
+        step("Установка имени студента", ()->{
+            System.out.println("Hello, " + System.getProperty("user_name", "unknow student"));
+
+        });
     }
 
     //gradle clean hello_test -Duser_name=Anatoliy
