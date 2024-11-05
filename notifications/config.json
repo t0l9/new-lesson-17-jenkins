@@ -6,7 +6,7 @@
     "comment": "any comment here",
     "reportLink": "",
     "language": "ru",
-    "allureFolder": "build/reports/allure-report/allureReport/",
+    "allureFolder": "allure-report/",
     "enableChart": true,
     "enableSuitesPublishing": false,
     "customData": {}
