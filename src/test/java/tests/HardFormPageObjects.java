@@ -59,7 +59,6 @@ public class HardFormPageObjects extends TestBase {
             registrationPage.setNumber(number);
         });
 
-
                 registrationPage.setNumber(number)
                 .selectBirthDay(date)
                 .setHobbies(hobbies)

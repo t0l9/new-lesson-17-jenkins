@@ -27,7 +27,8 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
 
         //Добавляем selenoid для запуска тестов из вне через jenkins
-        Configuration.remote = System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        //Configuration.remote = System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
