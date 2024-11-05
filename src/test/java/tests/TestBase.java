@@ -19,15 +19,15 @@ public class TestBase {
     @BeforeAll
     static void beforeAll(){
 
-        Configuration.browserSize = "1920x1080";
-        Configuration.browser = "chrome";
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = "126.0";
         //Configuration.baseUrl = "https://demoqa.com";
         //Добавление через пропертиес
         Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
 
-        //Добавляем selenoid для запуска тестов из вне
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        //Добавляем selenoid для запуска тестов из вне через jenkins
+        Configuration.remote = System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
