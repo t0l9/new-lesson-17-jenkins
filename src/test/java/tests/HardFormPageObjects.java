@@ -22,8 +22,8 @@ public class HardFormPageObjects extends TestBase {
     @Story("Создание клиента")
     void seccessfulRegistrationTest() {
 
-        String name = "Anatoliy";
-        String lastName = "Kolyshkin";
+        String name = System.getProperty("user_name", "Anatoliy");;
+        String lastName = System.getProperty("user_last_name", "Kolyshkin");
         String email = "t0l4ik.kas1@gmail.com";
         String gender = "Male";
         String number = "4545444444";
